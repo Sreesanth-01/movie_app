@@ -14,7 +14,7 @@ const API_OPTIONS={
   method: 'GET',
   headers:{
     accept: 'application/json',
-    // Authorization: `Bearer ${API_KEY}`
+    Authorization: `Bearer ${API_KEY}`
   }
 }
 
@@ -34,8 +34,8 @@ const App = () => {
     setErrorMessage('');
     try {
       const endpoint = query
-        ? `${API_BASE_URL}/search/movie?query=${encodeURIComponent(query)}&api_key=${API_KEY}`
-        : `${API_BASE_URL}/discover/movie?sort_by=vote_count.desc&api_key=${API_KEY}`;
+        ? `${API_BASE_URL}/search/movie?query=${encodeURIComponent(query)}`
+        : `${API_BASE_URL}/discover/movie?sort_by=vote_count.desc`;
 
       const response = await fetch(endpoint, API_OPTIONS);
 
