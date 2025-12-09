@@ -104,6 +104,7 @@
 
   .movie-card {
     @apply bg-dark-100 p-5 rounded-2xl shadow-inner shadow-light-100/10;
+    
 
     & img {
       @apply rounded-lg h-auto w-full;
@@ -144,6 +145,10 @@
     & .content .overview{
       color: white
     }
+  }
+  .movie-card:hover {
+    cursor: pointer;
+    border:2px solid black;
   }
 }
 .selected-backdrop {
