@@ -3,6 +3,7 @@ import Search from './components/Search.jsx';
 import Spinner from './components/Spinner.jsx';
 import MovieCard from './components/MovieCard.jsx';
 import { useDebounce } from 'react-use';
+import SelectedMovie from './components/SelectedMovie.jsx';
 
 const API_BASE_URL='https://api.themoviedb.org/3'
 
@@ -19,6 +20,7 @@ const API_OPTIONS={
 const App = () => {
   const [searchTerm,setSearchTerm] = useState('')
   const [movieList,setMovieList] = useState([])
+  const [selectedMovie,setSelectedMovie] = useState(null)
   const [errorMessage, setErrorMessage] = useState('')
   const [isLoading,setIsLoading] = useState(false)
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('')
@@ -88,10 +90,11 @@ const App = () => {
           ) : (
             <ul>
               {movieList.map((movie) => (
-                <MovieCard key={movie.id} movie={movie}></MovieCard>
+                <MovieCard key={movie.id} movie={movie} onSelect={setSelectedMovie}></MovieCard>
               ))}
             </ul>
           )}
+          <SelectedMovie movie={selectedMovie} onClose={()=>{setSelectedMovie(null)}}></SelectedMovie>
 
           
           

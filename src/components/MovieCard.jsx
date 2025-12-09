@@ -1,8 +1,10 @@
 import React from 'react'
 
-const MovieCard = ({ movie:{title, vote_average, poster_path, release_date, original_language,overview} }) => {
+const MovieCard = ({ movie,onSelect }) => {
+  const {title, vote_average, poster_path, release_date, original_language} = movie;
+  
   return (
-    <div className='movie-card'>
+    <div className='movie-card' onClick={()=>onSelect(movie)}>
       <img src={poster_path ? `https://image.tmdb.org/t/p/w500/${poster_path}` : 'no-movie.png' } alt={title} />
       
       <div className='mt-4'>
@@ -19,10 +21,6 @@ const MovieCard = ({ movie:{title, vote_average, poster_path, release_date, orig
 
             <span>•</span>
             <p className='year'>{release_date ? release_date.split('-')[0] : 'N/A'}</p>
-
-            <div>
-              <p className='overview'>{overview}</p>
-            </div>
         </div>
 
 
